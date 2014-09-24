@@ -16,9 +16,61 @@
                     <view key="view" contentMode="scaleToFill" id="dZr-ny-Fbo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.26747486149999999" green="1" blue="0.32945114939999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="zkn-zZ-IFA">
+                                <rect key="frame" x="175" y="225" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="tJa-eV-qJt"/>
+                                    <constraint firstAttribute="width" constant="250" id="z6W-kR-z6c"/>
+                                </constraints>
+                            </imageView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xqG-ha-V8J">
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="iWB-3z-Vyc"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="iFD-w3-7i5">
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="REPO_SEARCH_CELL" id="eKb-HV-akx">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eKb-HV-akx" id="c0Y-FI-MhA">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="zkn-zZ-IFA" secondAttribute="centerX" id="6De-gN-8nK"/>
+                            <constraint firstItem="iFD-w3-7i5" firstAttribute="leading" secondItem="dZr-ny-Fbo" secondAttribute="leadingMargin" constant="-16" id="Fza-5B-iZ3"/>
+                            <constraint firstItem="iFD-w3-7i5" firstAttribute="top" secondItem="xqG-ha-V8J" secondAttribute="bottom" id="GgL-QE-FBv"/>
+                            <constraint firstAttribute="centerY" secondItem="zkn-zZ-IFA" secondAttribute="centerY" constant="-50" id="RkH-bz-h8F"/>
+                            <constraint firstItem="xqG-ha-V8J" firstAttribute="leading" secondItem="dZr-ny-Fbo" secondAttribute="leadingMargin" constant="-16" id="SZ2-ux-GlT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xqG-ha-V8J" secondAttribute="trailing" constant="-16" id="gOX-wK-9KO"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="iFD-w3-7i5" secondAttribute="bottom" id="h5Q-4R-uSC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="iFD-w3-7i5" secondAttribute="trailing" constant="-16" id="lTz-8R-i9f"/>
+                            <constraint firstItem="iFD-w3-7i5" firstAttribute="top" secondItem="dZr-ny-Fbo" secondAttribute="topMargin" id="oDp-Qt-r9Z"/>
+                            <constraint firstItem="xqG-ha-V8J" firstAttribute="top" secondItem="Y2b-Rh-p2H" secondAttribute="bottom" id="xFk-oW-I5C"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oDp-Qt-r9Z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="PCZ-9r-JwE"/>
+                    <connections>
+                        <outlet property="imageView" destination="zkn-zZ-IFA" id="fB7-DS-smS"/>
+                        <outlet property="imageViewCenterXConstraint" destination="6De-gN-8nK" id="fY0-ja-jbn"/>
+                        <outlet property="searchBar" destination="xqG-ha-V8J" id="nYz-Zu-5hi"/>
+                        <outlet property="tableView" destination="iFD-w3-7i5" id="ipq-x6-2E1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Txa-IR-KlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -254,6 +306,9 @@
             <point key="canvasLocation" x="1748" y="-496"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="github_icon.png" width="500" height="500"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yun-gG-RFE"/>
     </inferredMetricsTieBreakers>
