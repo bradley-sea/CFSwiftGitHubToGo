@@ -8,13 +8,14 @@
 
 import UIKit
 
-class UsersViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
+class UsersViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var results = [User]()
     var networkManager : NetworkManager!
+    let animationController = UserAnimationController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
         self.networkManager = appDelegate.networkManager
         self.collectionView.dataSource = self
         self.searchBar.delegate = self
+        self.navigationController!.delegate = self
         // Do any additional setup after loading the view.
     }
+    
+    //MARK: UICollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.results.count
@@ -44,6 +48,7 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
                     NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                         user.avatarImage = userImage
                         cell.imageView.image = userImage
+                        
                     })
                 }
             })
@@ -51,6 +56,8 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
         
         return cell
     }
+    
+    //MARK: UISearchBarDelegate
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
@@ -66,6 +73,32 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
                 }
             })
         })
+        
+    }
+    
+    //MARK: UINavigationControllerDelegate
+    
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if toVC is UserViewController {
+        return self.animationController
+        }
+        else {
+            return nil
+        }
+    }
+    
+    //MARK : PrepareForSegue
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "SHOW_USER" {
+            let destinationVC = segue.destinationViewController as UserViewController
+            let indexPath = self.collectionView.indexPathsForSelectedItems().first as NSIndexPath
+            let user = self.results[indexPath.row]
+            destinationVC.selectedUser = user
+            self.animationController.selectedCell = self.collectionView.cellForItemAtIndexPath(indexPath)
+         }
         
     }
 }

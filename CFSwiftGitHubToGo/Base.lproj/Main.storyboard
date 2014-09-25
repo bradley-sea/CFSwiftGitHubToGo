@@ -126,6 +126,7 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="5aY-Ui-8hi" id="ocT-YQ-ACN"/>
+                                            <segue destination="ckZ-zM-5bf" kind="show" identifier="SHOW_USER" id="332-hK-eNJ"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -151,6 +152,51 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3I-za-z4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2512" y="321"/>
+        </scene>
+        <!--User View Controller-->
+        <scene sceneID="UXN-8y-UuN">
+            <objects>
+                <viewController id="ckZ-zM-5bf" customClass="UserViewController" customModule="CFSwiftGitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pda-Th-mZc"/>
+                        <viewControllerLayoutGuide type="bottom" id="7cA-k8-e1A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ll2-ZN-ION">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kvw-uu-F4F">
+                                <rect key="frame" x="277.5" y="260" width="45.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IPF-7f-bCO">
+                                <rect key="frame" x="200" y="52" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="HPu-2U-ctH"/>
+                                    <constraint firstAttribute="height" constant="200" id="ubB-V4-1fO"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="kvw-uu-F4F" secondAttribute="centerX" id="27g-Lg-wSr"/>
+                            <constraint firstAttribute="centerX" secondItem="IPF-7f-bCO" secondAttribute="centerX" id="MBR-XT-kBG"/>
+                            <constraint firstItem="IPF-7f-bCO" firstAttribute="top" secondItem="Pda-Th-mZc" secondAttribute="bottom" constant="8" id="lFS-LA-LbX"/>
+                            <constraint firstItem="kvw-uu-F4F" firstAttribute="top" secondItem="IPF-7f-bCO" secondAttribute="bottom" constant="8" id="xmc-tA-BNd"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="userImageView" destination="IPF-7f-bCO" id="eRT-8u-pXa"/>
+                        <outlet property="userImageViewTopConstraint" destination="lFS-LA-LbX" id="S13-2m-I6g"/>
+                        <outlet property="userNameLabel" destination="kvw-uu-F4F" id="umg-7a-y5W"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8u1-Ec-aTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3467" y="536"/>
         </scene>
         <!--Menu-->
         <scene sceneID="03w-KJ-e4B">
