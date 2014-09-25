@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A204E95C19D3810A00EB6D8D /* github_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A204E95B19D3810A00EB6D8D /* github_icon.png */; };
+		A237117A19D4711A004ECD78 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237117919D4711A004ECD78 /* UsersViewController.swift */; };
+		A237117C19D471C9004ECD78 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237117B19D471C9004ECD78 /* UserCell.swift */; };
+		A237117E19D4725F004ECD78 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A237117D19D4725F004ECD78 /* User.swift */; };
 		A2F8D93F19D31A7F00EC1333 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F8D93E19D31A7F00EC1333 /* AppDelegate.swift */; };
 		A2F8D94219D31A7F00EC1333 /* CFSwiftGitHubToGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A2F8D94019D31A7F00EC1333 /* CFSwiftGitHubToGo.xcdatamodeld */; };
 		A2F8D94419D31A7F00EC1333 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F8D94319D31A7F00EC1333 /* ViewController.swift */; };
@@ -34,6 +37,9 @@
 
 /* Begin PBXFileReference section */
 		A204E95B19D3810A00EB6D8D /* github_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = github_icon.png; sourceTree = "<group>"; };
+		A237117919D4711A004ECD78 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		A237117B19D471C9004ECD78 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		A237117D19D4725F004ECD78 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A2F8D93919D31A7F00EC1333 /* CFSwiftGitHubToGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CFSwiftGitHubToGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F8D93D19D31A7F00EC1333 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2F8D93E19D31A7F00EC1333 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +101,9 @@
 				A2F8D94319D31A7F00EC1333 /* ViewController.swift */,
 				A2F8D96719D333B300EC1333 /* SplitContainerViewController.swift */,
 				A2F8D94519D31A7F00EC1333 /* Main.storyboard */,
+				A237117B19D471C9004ECD78 /* UserCell.swift */,
+				A237117919D4711A004ECD78 /* UsersViewController.swift */,
+				A237117D19D4725F004ECD78 /* User.swift */,
 				A2F8D99A19D3541100EC1333 /* NetworkManager.swift */,
 				A2F8D99E19D366A100EC1333 /* Repo.swift */,
 				A2F8D96519D32E0100EC1333 /* TableViewCell.swift */,
@@ -241,7 +250,10 @@
 				A2F8D99B19D3541100EC1333 /* NetworkManager.swift in Sources */,
 				A2F8D94219D31A7F00EC1333 /* CFSwiftGitHubToGo.xcdatamodeld in Sources */,
 				A2F8D93F19D31A7F00EC1333 /* AppDelegate.swift in Sources */,
+				A237117A19D4711A004ECD78 /* UsersViewController.swift in Sources */,
+				A237117C19D471C9004ECD78 /* UserCell.swift in Sources */,
 				A2F8D96819D333B300EC1333 /* SplitContainerViewController.swift in Sources */,
+				A237117E19D4725F004ECD78 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,9 +44,9 @@ class ViewController: UIViewController, UISearchBarDelegate,UITableViewDataSourc
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        self.networkManager.fetchRepositoriesWithSearchTerm(searchBar.text, completionHandler: { (errorDescription, results) -> (Void) in
+        var searchTerm = searchBar.text.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        self.networkManager.fetchRepositoriesWithSearchTerm(searchTerm, completionHandler: { (errorDescription, results) -> (Void) in
             NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
-                
                 if results != nil {
                     if !self.imageView.hidden {
                         self.imageViewCenterXConstraint.constant = 350
@@ -57,11 +57,10 @@ class ViewController: UIViewController, UISearchBarDelegate,UITableViewDataSourc
                                 self.tableView.reloadData()
                                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                                     self.tableView.alpha = 1
-                                })
+                            })
                         })
                     }
                 }
-                
             })
         })
     }

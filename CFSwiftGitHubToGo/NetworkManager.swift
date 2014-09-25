@@ -13,6 +13,7 @@ class NetworkManager {
     var urlSession = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
     var token : String?
     var oAuthCompletionHandler : (() -> ())?
+    let imageQueue = NSOperationQueue()
     
     let GITHUB_CLIENT_ID = "client_id=b44b4d51dff4208800d0&"
     let GITHUB_CLIENT_SECRET = "dfc5f54502dc651cea4dc8bb8b006cc1e1aff7fb"
@@ -87,8 +88,6 @@ class NetworkManager {
        
     }
     
-    
-    
     func fetchRepositoriesWithSearchTerm(searchTerm : String, completionHandler : (errorDescription : String?, results : [Repo]?) -> (Void)) {
         let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)&sort=stars&order=desc")
         let dataTask = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
@@ -105,7 +104,7 @@ class NetworkManager {
                     if error != nil {
                         completionHandler(errorDescription: "Something went wrong, please try again", results: nil)
                     } else {
-                        var repos = Repo().parseJSONIntoRepos(rawJSON)
+                        var repos = Repo.parseJSONIntoRepos(rawJSON)
                         println(repos.count)
                         completionHandler(errorDescription: nil, results: repos)
                     }
@@ -119,4 +118,44 @@ class NetworkManager {
         dataTask.resume()
     }
     
+    func fetchUsersWithSearchTerm(searchTerm : String, completionHandler : (errorDescription : String?, results : [User]?) -> (Void)) {
+        
+        let url = NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")
+        let dataTask = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                println(error.localizedDescription)
+                completionHandler(errorDescription: "Something went wrong, please try again", results: nil)
+            } else {
+                let httpResponse = response as NSHTTPURLResponse
+                switch httpResponse.statusCode {
+                case 200:
+                    println(httpResponse)
+                    var jsonError : NSError?
+                    var rawJSON = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &jsonError) as NSDictionary
+                    if error != nil {
+                        completionHandler(errorDescription: "Something went wrong, please try again", results: nil)
+                    } else {
+                        var users = User.parseJSONIntoUsers(rawJSON)
+                        completionHandler(errorDescription: nil, results: users)
+                    }
+                default:
+                    println(httpResponse.statusCode)
+                    println(httpResponse)
+                }
+            }
+        })
+        dataTask.resume()
+    }
+    
+    func fetchAvatarImageWithURLString(urlString: String, completionHandler : (userImage : UIImage) -> (Void)) {
+        
+        let url = NSURL(string: urlString)
+        
+        self.imageQueue.addOperationWithBlock { () -> Void in
+            let imageData = NSData(contentsOfURL: url)
+            let image = UIImage(data: imageData)
+            completionHandler(userImage: image)
+        }
+    }
+   
 }

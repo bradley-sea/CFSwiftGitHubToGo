@@ -18,7 +18,7 @@ class Repo {
     var forks = 0
     var repoDescription = ""
     
-    func parseJSONIntoRepos(json : NSDictionary) -> [Repo] {
+    class func parseJSONIntoRepos(json : NSDictionary) -> [Repo] {
         var repos = [Repo]()
         var jsonArray = json["items"] as NSArray
         

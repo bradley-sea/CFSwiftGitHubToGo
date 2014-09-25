@@ -76,10 +76,10 @@
             </objects>
             <point key="canvasLocation" x="895" y="362"/>
         </scene>
-        <!--View Controller-->
+        <!--Users View Controller-->
         <scene sceneID="bNy-9X-KOT">
             <objects>
-                <viewController id="xSS-Tx-5yb" customClass="ViewController" customModule="CFSwiftGitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xSS-Tx-5yb" customClass="UsersViewController" customModule="CFSwiftGitHubToGo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QXK-by-iXd"/>
                         <viewControllerLayoutGuide type="bottom" id="nGA-WD-O3y"/>
@@ -87,13 +87,70 @@
                     <view key="view" contentMode="scaleToFill" id="aQQ-E2-Z29">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.25142978890000001" blue="0.213605288" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ksw-U4-AKT">
+                                <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="4TX-Yr-xRV"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="35b-Hg-Mxb">
+                                <rect key="frame" x="0.0" y="88" width="600" height="512"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T0z-PM-YgS">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_CELL" id="yDk-CK-o2w" customClass="UserCell" customModule="CFSwiftGitHubToGo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5aY-Ui-8hi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="5aY-Ui-8hi" firstAttribute="top" secondItem="yDk-CK-o2w" secondAttribute="topMargin" constant="-8" id="N4P-xc-5cR"/>
+                                            <constraint firstItem="5aY-Ui-8hi" firstAttribute="leading" secondItem="yDk-CK-o2w" secondAttribute="leadingMargin" constant="-8" id="XIB-Gg-VV4"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="5aY-Ui-8hi" secondAttribute="bottom" constant="-8" id="c3Q-f7-XO6"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="5aY-Ui-8hi" secondAttribute="trailing" constant="-8" id="jAx-7C-a5J"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="5aY-Ui-8hi" id="ocT-YQ-ACN"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ksw-U4-AKT" secondAttribute="trailing" constant="-16" id="GRg-IM-2rp"/>
+                            <constraint firstItem="35b-Hg-Mxb" firstAttribute="top" secondItem="Ksw-U4-AKT" secondAttribute="bottom" id="GWv-WO-sJo"/>
+                            <constraint firstItem="nGA-WD-O3y" firstAttribute="top" secondItem="35b-Hg-Mxb" secondAttribute="bottom" id="KsZ-mj-5zq"/>
+                            <constraint firstItem="Ksw-U4-AKT" firstAttribute="leading" secondItem="aQQ-E2-Z29" secondAttribute="leadingMargin" constant="-16" id="MMF-sq-cDe"/>
+                            <constraint firstItem="Ksw-U4-AKT" firstAttribute="top" secondItem="QXK-by-iXd" secondAttribute="bottom" id="Ogh-dJ-AnW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="35b-Hg-Mxb" secondAttribute="trailing" constant="-16" id="gjL-fp-VT0"/>
+                            <constraint firstItem="35b-Hg-Mxb" firstAttribute="leading" secondItem="aQQ-E2-Z29" secondAttribute="leadingMargin" constant="-16" id="vHa-0d-DPn"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pRM-HC-3si"/>
+                    <connections>
+                        <outlet property="collectionView" destination="35b-Hg-Mxb" id="pdS-Xm-L77"/>
+                        <outlet property="searchBar" destination="Ksw-U4-AKT" id="fGL-TM-8Iq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3I-za-z4m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2512" y="312"/>
+            <point key="canvasLocation" x="2512" y="321"/>
         </scene>
         <!--Menu-->
         <scene sceneID="03w-KJ-e4B">
@@ -137,7 +194,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="yRN-1z-KWG" kind="showDetail" id="kSA-al-qZa"/>
+                                            <segue destination="lNj-pS-tMt" kind="showDetail" id="9bD-51-xXW"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="iiY-bh-Tsq">
@@ -153,9 +210,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="lNj-pS-tMt" kind="showDetail" id="yCR-bj-SMM"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
