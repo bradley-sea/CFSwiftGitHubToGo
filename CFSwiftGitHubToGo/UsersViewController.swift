@@ -58,6 +58,10 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
     }
     
     //MARK: UISearchBarDelegate
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        
+        return text.validate()
+    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
@@ -73,16 +77,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
                 }
             })
         })
-        
     }
     
     //MARK: UINavigationControllerDelegate
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        UIView.addKeyframeWithRelativeStartTime(0.1, relativeDuration: 0.1) { () -> Void in
-            
-        }
         
         if toVC is UserViewController {
         return self.animationController

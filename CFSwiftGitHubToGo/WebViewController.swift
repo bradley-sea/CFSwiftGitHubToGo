@@ -15,7 +15,6 @@ class WebViewController: UIViewController {
     var webView: WKWebView!
     var url : NSURL!
     
-    
     override func loadView() {
         super.loadView()
         self.webView = WKWebView()
