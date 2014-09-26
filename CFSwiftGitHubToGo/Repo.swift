@@ -28,6 +28,7 @@ class Repo {
             repo.name = jsonRepo.objectForKey("name") as String
             repo.isPrivate = jsonRepo.objectForKey("private") as Bool
             repo.forks = jsonRepo.objectForKey("forks_count") as Int
+            repo.repoURL = jsonRepo.objectForKey("html_url") as String
             repo.starGazers = jsonRepo.objectForKey("stargazers_count") as Int
             if jsonRepo.objectForKey("description") is NSNull {
                     repo.repoDescription = " "

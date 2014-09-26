@@ -80,6 +80,10 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
+        UIView.addKeyframeWithRelativeStartTime(0.1, relativeDuration: 0.1) { () -> Void in
+            
+        }
+        
         if toVC is UserViewController {
         return self.animationController
         }

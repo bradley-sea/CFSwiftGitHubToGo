@@ -75,6 +75,15 @@ class ViewController: UIViewController, UISearchBarDelegate,UITableViewDataSourc
         cell.textLabel?.text = repo.repoDescription
         return cell
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SHOW_WEB_REPO" {
+            let destinationVC = segue.destinationViewController as WebViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let selectedRepo = self.searchResults[indexPath!.row]
+            destinationVC.url = NSURL(string:selectedRepo.repoURL)
+        }
+    }
 
 }
 
