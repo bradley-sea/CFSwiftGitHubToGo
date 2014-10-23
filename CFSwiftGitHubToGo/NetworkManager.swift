@@ -32,13 +32,13 @@ class NetworkManager {
             self.urlSession = NSURLSession(configuration: configuration)
             
         }
-        println(self.token!)
+       println(self.token?)
     }
     
     func requestOauthAccessWithCompletion(completionClosure: () -> ()) {
         self.oAuthCompletionHandler = completionClosure
         var urlString : String = GITHUB_OAUTH_URL + GITHUB_CLIENT_ID + GITHUB_CALLBACK_URI + GITHUB_SCOPE
-        UIApplication.sharedApplication().openURL(NSURL(string: urlString))
+        UIApplication.sharedApplication().openURL(NSURL(string: urlString)!)
     }
     
     func handleOAuthCallbackWithURL(callbackURL : NSURL)
@@ -51,7 +51,7 @@ class NetworkManager {
         var postData = postQuery.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
         var postLength = "\(postData!.length)"
         
-        var request = NSMutableURLRequest(URL: NSURL(string: "https://github.com/login/oauth/access_token"))
+        var request = NSMutableURLRequest(URL: NSURL(string: "https://github.com/login/oauth/access_token")!)
         request.HTTPMethod = "POST"
         request.setValue(postLength, forHTTPHeaderField: "Content-Length")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -68,7 +68,7 @@ class NetworkManager {
                 switch httpResponse.statusCode {
                 case 200:
                     var tokenResponse = NSString(data:data, encoding: NSASCIIStringEncoding)
-                    var tokenComponents = tokenResponse.componentsSeparatedByString("&") as [String]
+                    var tokenComponents = tokenResponse?.componentsSeparatedByString("&") as [String]
                     var accessTokenWithCode = tokenComponents[0]
                     var accessTokens = accessTokenWithCode.componentsSeparatedByString("=") as [String]
                     var accessToken = accessTokens[1]
@@ -90,7 +90,7 @@ class NetworkManager {
     
     func fetchRepositoriesWithSearchTerm(searchTerm : String, completionHandler : (errorDescription : String?, results : [Repo]?) -> (Void)) {
         let url = NSURL(string: "https://api.github.com/search/repositories?q=\(searchTerm)&sort=stars&order=desc")
-        let dataTask = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let dataTask = self.urlSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
             if error != nil {
                 println(error.localizedDescription)
                 completionHandler(errorDescription: "Something went wrong, please try again", results: nil)
@@ -121,7 +121,7 @@ class NetworkManager {
     func fetchUsersWithSearchTerm(searchTerm : String, completionHandler : (errorDescription : String?, results : [User]?) -> (Void)) {
         
         let url = NSURL(string: "https://api.github.com/search/users?q=\(searchTerm)")
-        let dataTask = self.urlSession.dataTaskWithURL(url, completionHandler: { (data, response, error) -> Void in
+        let dataTask = self.urlSession.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
             if error != nil {
                 println(error.localizedDescription)
                 completionHandler(errorDescription: "Something went wrong, please try again", results: nil)
@@ -152,9 +152,9 @@ class NetworkManager {
         let url = NSURL(string: urlString)
         
         self.imageQueue.addOperationWithBlock { () -> Void in
-            let imageData = NSData(contentsOfURL: url)
-            let image = UIImage(data: imageData)
-            completionHandler(userImage: image)
+            let imageData = NSData(contentsOfURL: url!)
+            let image = UIImage(data: imageData!)
+            completionHandler(userImage: image!)
         }
     }
    

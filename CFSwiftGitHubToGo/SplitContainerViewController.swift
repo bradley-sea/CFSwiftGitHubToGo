@@ -34,8 +34,6 @@ class SplitContainerViewController: UIViewController, UISplitViewControllerDeleg
             if menuVC.firstLaunch {
                menuVC.firstLaunch = false
                 return true
-            } else {
-                 return false
             }
         }
         return false

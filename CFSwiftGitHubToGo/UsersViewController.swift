@@ -58,10 +58,10 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
     }
     
     //MARK: UISearchBarDelegate
-    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        
-        return text.validate()
-    }
+//    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+//        
+//        return text.validate()
+//    }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         
@@ -97,7 +97,8 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UISearc
         
         if segue.identifier == "SHOW_USER" {
             let destinationVC = segue.destinationViewController as UserViewController
-            let indexPath = self.collectionView.indexPathsForSelectedItems().first as NSIndexPath
+            var indexPaths = self.collectionView.indexPathsForSelectedItems()
+            let indexPath = indexPaths?.first as NSIndexPath
             let user = self.results[indexPath.row]
             destinationVC.selectedUser = user
             self.animationController.selectedCell = self.collectionView.cellForItemAtIndexPath(indexPath)

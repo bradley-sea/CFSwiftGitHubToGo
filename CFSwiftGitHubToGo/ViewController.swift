@@ -72,7 +72,7 @@ class ViewController: UIViewController, UISearchBarDelegate,UITableViewDataSourc
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("REPO_SEARCH_CELL", forIndexPath: indexPath) as UITableViewCell
         let repo = self.searchResults[indexPath.row]
-        cell.textLabel?.text = repo.repoDescription
+        cell.textLabel.text = repo.repoDescription
         return cell
     }
     
